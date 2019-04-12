@@ -3,11 +3,14 @@ import React from "react"
 import Menu from "./Menu"
 import Logo from "./Logo"
 import styled from "styled-components"
+import { Container } from "../styles"
 
 const StyledHeader = styled.header`
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
+  div {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
   @media (min-width: 768px) {
     height: 250px;
   }
@@ -16,8 +19,10 @@ const StyledHeader = styled.header`
 
 const Header = ({ siteTitle, siteDescription }) => (
   <StyledHeader>
-    <Logo siteTitle={siteTitle} siteDescription={siteDescription} />
-    <Menu />
+    <Container>
+      <Logo siteTitle={siteTitle} siteDescription={siteDescription} />
+      <Menu />
+    </Container>
   </StyledHeader>
 )
 
