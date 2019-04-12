@@ -13,13 +13,15 @@ const SiteTitle = styled.h1`
   font-size: 42px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-weight: 700;
+
   a {
     color: #222;
     text-decoration: none;
   }
 `
 
-const Logo = ({ siteTitle, siteDescription }) => (
+const Logo = ({ siteTitle }) => (
   <HeaderLeft>
     <SiteTitle>
       <Link to="/">{siteTitle}</Link>

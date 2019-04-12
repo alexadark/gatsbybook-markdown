@@ -7,7 +7,7 @@ import { Container } from "../styles"
 
 const StyledHeader = styled.header`
   div {
-    padding: 20px;
+    padding: 20px 0;
     display: flex;
     justify-content: space-between;
   }

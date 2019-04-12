@@ -569,4 +569,10 @@ textarea,
   display: inherit;
   position: absolute;
 }
+
+/* Headings */
+h1,h2,h3{
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
 `
