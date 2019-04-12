@@ -125,6 +125,7 @@ pre {
 
 a {
   background-color: transparent;
+  transition: all .4s ease-in-out
 }
 
 /**
