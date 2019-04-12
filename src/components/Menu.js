@@ -3,9 +3,12 @@ import React from "react"
 import styled from "styled-components"
 
 const HeaderMenu = styled.nav`
+  display: flex;
+  align-items: center;
   ul {
     display: flex;
     justify-content: flex-end;
+    margin: 0;
     > li {
       padding-right: 20px;
 
@@ -14,6 +17,8 @@ const HeaderMenu = styled.nav`
         text-transform: uppercase;
         color: #999999;
         font-size: 13px;
+        font-weight: 300;
+        letter-spacing: 1.5px;
 
         &:hover,
         &:active {

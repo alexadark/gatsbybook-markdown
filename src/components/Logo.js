@@ -1,7 +1,6 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import LogoImage from "../images/gatsby-icon.png"
 import styled from "styled-components"
 
 const HeaderLeft = styled.div`
@@ -9,23 +8,19 @@ const HeaderLeft = styled.div`
   justify-content: flex-start;
   align-items: center;
 `
-const StyledLogo = styled.img`
-  max-width: 30px;
-  padding-right: 10px;
-`
 
 const SiteTitle = styled.h1`
   font-size: 42px;
   text-transform: uppercase;
+  letter-spacing: 2px;
   a {
-    color: #111;
+    color: #222;
     text-decoration: none;
   }
 `
 
 const Logo = ({ siteTitle, siteDescription }) => (
   <HeaderLeft>
-    <StyledLogo src={LogoImage} alt={`logo for ${siteTitle}`} />
     <SiteTitle>
       <Link to="/">{siteTitle}</Link>
     </SiteTitle>

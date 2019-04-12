@@ -8,6 +8,10 @@ const StyledHeader = styled.header`
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  @media (min-width: 768px) {
+    height: 250px;
+  }
+  height: 150px;
 `
 
 const Header = ({ siteTitle, siteDescription }) => (
