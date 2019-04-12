@@ -2,12 +2,11 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import Menu from "./Menu"
+import Logo from "./Logo"
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, siteDescription }) => (
   <header>
-    <h1 style={{ margin: 0 }}>
-      <Link to="/">{siteTitle}</Link>
-    </h1>
+    <Logo siteTitle={siteTitle} siteDescription={siteDescription} />
     <Menu />
   </header>
 )
