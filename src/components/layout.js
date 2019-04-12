@@ -11,7 +11,6 @@ import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./Header.js"
 import Footer from "./Footer.js"
-import styled from "styled-components"
 import { GlobalStyles, Container } from "../styles"
 
 const Layout = ({ children }) => (

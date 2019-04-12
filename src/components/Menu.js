@@ -11,6 +11,9 @@ const HeaderMenu = styled.nav`
     margin: 0;
     > li {
       padding-right: 20px;
+      &:last-child {
+        padding-right: 0;
+      }
 
       a {
         text-decoration: none;
