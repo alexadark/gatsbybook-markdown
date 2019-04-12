@@ -35,7 +35,7 @@ const Layout = ({ children }) => (
         />
 
         <main>
-          <Container style={{ padding: "0 20px" }}>{children}</Container>
+          <Container>{children}</Container>
         </main>
         <Footer />
       </>

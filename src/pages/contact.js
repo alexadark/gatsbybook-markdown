@@ -2,11 +2,12 @@ import React from "react"
 
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
+import { PageTitle } from "../styles"
 
 const ContactPage = () => (
   <Layout>
     <SEO title="Contact page" />
-    <h1>Contact Page</h1>
+    <PageTitle>Contact Page</PageTitle>
     <p>
       Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac
       cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo

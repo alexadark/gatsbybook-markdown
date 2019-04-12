@@ -125,7 +125,13 @@ pre {
 
 a {
   background-color: transparent;
-  transition: all .4s ease-in-out
+  transition: all .4s ease-in-out;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  &:hover{
+    border-color: #111;
+  }
 }
 
 /**

@@ -17,7 +17,7 @@ const SiteTitle = styled.h1`
 
   a {
     color: #222;
-    text-decoration: none;
+    border: none;
   }
 `
 

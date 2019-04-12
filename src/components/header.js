@@ -7,14 +7,15 @@ import { Container } from "../styles"
 
 const StyledHeader = styled.header`
   div {
-    padding: 20px 0;
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
     display: flex;
     justify-content: space-between;
   }
   @media (min-width: 768px) {
-    height: 250px;
+    padding: 80px 0;
   }
-  height: 150px;
+  padding: 40px 0;
 `
 
 const Header = ({ siteTitle, siteDescription }) => (

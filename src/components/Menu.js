@@ -19,6 +19,7 @@ const HeaderMenu = styled.nav`
         font-size: 13px;
         font-weight: 300;
         letter-spacing: 1.5px;
+        border: none;
 
         &:hover,
         &:active {
