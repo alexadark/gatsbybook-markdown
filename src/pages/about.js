@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import styled from "styled-components"
 import { PageTitle } from "../styles"
-import Image from "../components/Image"
+import Image from "../components/image"
 
 const TwoColumns = styled.div`
   @media (min-width: 1024px) {
