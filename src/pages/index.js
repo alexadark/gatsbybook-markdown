@@ -2,11 +2,13 @@ import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import { PageTitle } from "../styles"
+import LastPosts from "../components/LastPosts"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <PageTitle>Home</PageTitle>
+    <LastPosts />
     <p>
       Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac
       cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
