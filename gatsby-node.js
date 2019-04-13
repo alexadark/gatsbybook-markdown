@@ -1,30 +1,15 @@
 const path = require("path")
-const postData = require("/src/templates/posts/data.js")
+const postData = require("./src/templates/posts/data")
+const postTemplate = path.resolve("./src/templates/posts/singlePost.js")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  return await graphql(`
-    {
-      allMarkdownRemark {
-        edges {
-          node {
-            html
-            frontmatter {
-              title
-              slug
-              date(formatString: "MMMM DD, YYYY")
-              categories
-            }
-          }
-        }
-      }
-    }
-  `).then(results => {
+  return await graphql(postData).then(results => {
     results.data.allMarkdownRemark.edges.forEach(({ node }) => {
       const { slug, title, date, categories } = node.frontmatter
       createPage({
         path: `/posts${slug}`,
-        component: path.resolve("./src/templates/posts/singlePost.js"),
+        component: postTemplate,
         context: {
           slug,
           title,
