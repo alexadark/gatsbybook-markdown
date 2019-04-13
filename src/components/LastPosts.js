@@ -10,7 +10,6 @@ const POST_ARCHIVE_QUERY = graphql`
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { categories: { eq: "photo" } } }
     ) {
-      totalCount
       edges {
         node {
           html

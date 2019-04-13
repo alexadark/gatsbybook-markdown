@@ -1,4 +1,5 @@
 const path = require("path")
+const postData = require("/src/templates/posts/data.js")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
