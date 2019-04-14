@@ -6,7 +6,7 @@ categories: ["painting"]
 featuredImg: "dubai.jpeg"
 ---
 
-![](../images/dubai.jpeg)
+![](https://ws1.sinaimg.cn/large/006tNc79gy1g227l6ldrkj311i0u0ab8.jpg)
 
 # Hola!
 
