@@ -1,11 +1,12 @@
 ---
-slug: "/third-post"
-date: "2018-10-18"
-title: "Our Third Post"
-categories: ["painting"]
+slug: "/budapest"
+date: "2018-10-17"
+title: "Budapest"
+categories: ["painting", "photo"]
+featuredImg: "budapest.jpeg"
 ---
 
-# Hola!
+# YO!
 
 Sapiente fugit et unde ea. Veniam iure molestias ullam in. Et distinctio velit occaecati magni sed ratione sed ut.
 

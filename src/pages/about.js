@@ -44,7 +44,7 @@ const AboutPage = () => (
           elit non mi porta gravida at eget metus.
         </p>
       </div>
-      <Image />
+      <Image imgName="about.jpeg" />
     </TwoColumns>
   </Layout>
 )

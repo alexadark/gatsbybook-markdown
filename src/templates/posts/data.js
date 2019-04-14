@@ -9,6 +9,7 @@ module.exports = `
             slug
             date(formatString: "MMMM DD, YYYY")
             categories
+            featuredImg
           }
         }
       }

@@ -1,11 +1,14 @@
 ---
-slug: "/second-post"
-date: "2018-10-17"
-title: "Our Second Post"
-categories: ["painting", "photo"]
+slug: "/dubai"
+date: "2019-01-18"
+title: "Dubai"
+categories: ["painting"]
+featuredImg: "dubai.jpeg"
 ---
 
-# YO!
+![](../images/dubai.jpeg)
+
+# Hola!
 
 Sapiente fugit et unde ea. Veniam iure molestias ullam in. Et distinctio velit occaecati magni sed ratione sed ut.
 
