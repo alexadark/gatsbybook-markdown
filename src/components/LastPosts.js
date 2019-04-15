@@ -21,7 +21,7 @@ const PostList = styled.ul`
   }
 `
 
-const POST_ARCHIVE_QUERY = graphql`
+const LASTS_POSTS_QUERY = graphql`
   query BlogPostArchive {
     allMarkdownRemark(
       limit: 3
@@ -43,7 +43,7 @@ const POST_ARCHIVE_QUERY = graphql`
 
 const LastPosts = () => (
   <StaticQuery
-    query={POST_ARCHIVE_QUERY}
+    query={LASTS_POSTS_QUERY}
     render={({ allMarkdownRemark }) => (
       <aside>
         <h2 style={{ marginBottom: 50 }}>Latest Posts</h2>

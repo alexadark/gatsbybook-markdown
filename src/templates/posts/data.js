@@ -4,6 +4,7 @@ module.exports = `
       edges {
         node {
           html
+          excerpt(pruneLength: 300)
           frontmatter {
             title
             slug
