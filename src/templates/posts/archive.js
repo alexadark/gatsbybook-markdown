@@ -17,7 +17,7 @@ const Blog = props => {
       <FlexWrapper>
         <Main>
           {posts.map(post => {
-            const { excerpt, frontmatter } = post.node
+            const { excerpt, frontmatter, id } = post.node
             const { title, date, featuredImg, slug, categories } = frontmatter
             return (
               <article>
@@ -50,6 +50,7 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt(pruneLength: 300)
+          id
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
