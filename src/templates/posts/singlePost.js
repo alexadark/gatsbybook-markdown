@@ -12,8 +12,11 @@ const Content = styled.div`
   margin: 40px 0;
 `
 
-const SinglePost = ({ pageContext }) => {
-  const { content, categories, date, title, featuredImg } = pageContext
+const SinglePost = ({ data }) => {
+  const {
+    html,
+    frontmatter: { title, date, featuredImg, categories },
+  } = data.markdownRemark
   return (
     <Layout>
       <FlexWrapper>
@@ -23,7 +26,7 @@ const SinglePost = ({ pageContext }) => {
           </div>
           <h1 dangerouslySetInnerHTML={{ __html: title }} />
           <Date date={date} />
-          <Content dangerouslySetInnerHTML={{ __html: content }} />
+          <Content dangerouslySetInnerHTML={{ __html: html }} />
           <div className="categories">
             {categories &&
               categories.map(cat => (
@@ -40,5 +43,19 @@ const SinglePost = ({ pageContext }) => {
     </Layout>
   )
 }
+
+export const pageQuery = graphql`
+  query singlePostQuery($slug: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        date
+        featuredImg
+        categories
+      }
+    }
+  }
+`
 
 export default SinglePost

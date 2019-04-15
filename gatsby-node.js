@@ -9,19 +9,12 @@ exports.createPages = async ({ graphql, actions }) => {
     const posts = results.data.allMarkdownRemark.edges
 
     posts.forEach(({ node }) => {
-      const { slug, title, date, categories, featuredImg } = node.frontmatter
-
       //Create Single posts
       createPage({
         path: `/posts${slug}`,
         component: postTemplate,
         context: {
-          slug,
-          title,
-          date,
-          categories,
-          content: node.html,
-          featuredImg,
+          slug: node.frontmatter.slug,
         },
       })
 
