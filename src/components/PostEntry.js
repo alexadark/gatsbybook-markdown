@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "./Image"
 import Date from "./Date"
+import PostEntryTitle from "./PostEntryTitle"
 import styled from "styled-components"
 const Content = styled.div`
   columns: 2;
@@ -8,12 +9,19 @@ const Content = styled.div`
   margin: 40px 0;
 `
 
-const PostEntry = ({ featuredImg, title, html, categories, date }) => (
-  <>
+const PostEntry = ({
+  featuredImg,
+  title,
+  html,
+  categories,
+  date,
+  location,
+}) => (
+  <article>
     <div className="imageWrap" style={{ marginBottom: 60 }}>
       <Image imgName={featuredImg} />
     </div>
-    <h1 dangerouslySetInnerHTML={{ __html: title }} />
+    {/* <PostEntryTitle location={location} title={title} /> */}
     <Date date={date} />
     <Content dangerouslySetInnerHTML={{ __html: html }} />
     <div className="categories">
@@ -24,7 +32,7 @@ const PostEntry = ({ featuredImg, title, html, categories, date }) => (
           </div>
         ))}
     </div>
-  </>
+  </article>
 )
 
 export default PostEntry

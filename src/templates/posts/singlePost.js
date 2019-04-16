@@ -8,18 +8,20 @@ import { FlexWrapper, Main, Aside } from "../../styles"
 const SinglePost = ({ data }) => {
   const {
     html,
-    frontmatter: { title, date, featuredImg, categories },
+    frontmatter: { title, date, featuredImg, categories, slug },
   } = data.markdownRemark
   return (
     <Layout>
       <FlexWrapper>
         <Main>
-          <PostLayout
+          <PostEntry
             html={html}
             title={title}
             featuredImg={featuredImg}
             categories={categories}
             date={date}
+            slug={slug}
+            location="single"
           />
         </Main>
         <Aside>
@@ -39,6 +41,7 @@ export const pageQuery = graphql`
         date
         featuredImg
         categories
+        slug
       }
     }
   }
