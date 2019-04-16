@@ -21,17 +21,17 @@ exports.createPages = async ({ graphql, actions }) => {
 
       //Create blog archive with pagination
       const postsPerPage = 2
-      const numPagess = Math.ceil(posts.length / postsPerPage)
+      const numPages = Math.ceil(posts.length / postsPerPage)
       const blogPath = i => (i === 0 ? "/" : `/blog/${i + 1}`)
 
-      Array.from({ length: numPagess }).forEach((_, i) => {
+      Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
           path: blogPath(i),
           component: blogTemplate,
           context: {
             limit: postsPerPage,
             skip: i * postsPerPage,
-            numPagess,
+            numPages,
             currentPage: i + 1,
           },
         })
