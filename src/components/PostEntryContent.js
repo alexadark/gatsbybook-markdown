@@ -1,8 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 const Content = styled.div`
-  columns: 2;
-  column-gap: 30px;
   margin: 40px 0;
 `
 

@@ -1,5 +1,18 @@
 import React from "react"
 import { Link } from "gatsby"
+import styled from "styled-components"
+
+const EntryTitle = styled.h1`
+  font-size: 32px;
+  text-transform: uppercase;
+  a {
+    border: none;
+    color: #222;
+    &:hover {
+      color: #000;
+    }
+  }
+`
 
 const PostEntryTitle = ({ post, location }) => {
   const { title, slug } =
@@ -7,14 +20,14 @@ const PostEntryTitle = ({ post, location }) => {
   return (
     <>
       {location === "single" ? (
-        <h1 dangerouslySetInnerHTML={{ __html: title }} />
+        <EntryTitle dangerouslySetInnerHTML={{ __html: title }} />
       ) : (
-        <h2>
+        <EntryTitle as="h2">
           <Link
             to={`/posts${slug}`}
             dangerouslySetInnerHTML={{ __html: title }}
           />
-        </h2>
+        </EntryTitle>
       )}
     </>
   )

@@ -1,6 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 import Image from "./Image"
+import styled from "styled-components"
+
+const ImageWrap = styled.div`
+  margin-bottom: 60px;
+`
 
 const WithLink = ({ post, location, children }) =>
   location === "single" ? (
@@ -13,13 +18,11 @@ const PostEntryMedia = ({ post, location }) => {
   const { featuredImg } =
     location === "single" ? post.frontmatter : post.node.frontmatter
   return (
-    <div className="entry-media bottom-spacer center-align">
-      <WithLink location={location} post={post}>
-        <div className="imageWrap" style={{ marginBottom: 60 }}>
-          <Image imgName={featuredImg} />
-        </div>
-      </WithLink>
-    </div>
+    <WithLink location={location} post={post}>
+      <ImageWrap>
+        <Image imgName={featuredImg} />
+      </ImageWrap>
+    </WithLink>
   )
 }
 
