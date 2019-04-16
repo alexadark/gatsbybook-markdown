@@ -1,38 +1,21 @@
 import React from "react"
-import Image from "./Image"
 import Date from "./Date"
 import PostEntryTitle from "./PostEntryTitle"
-import styled from "styled-components"
-const Content = styled.div`
-  columns: 2;
-  column-gap: 30px;
-  margin: 40px 0;
-`
+import PostEntryMedia from "./PostEntryMedia"
+import PostEntryContent from "./PostEntryContent"
+import PostEntryMeta from "./PostEntryMeta"
 
-const PostEntry = ({
-  featuredImg,
-  title,
-  html,
-  categories,
-  date,
-  location,
-}) => (
-  <article>
-    <div className="imageWrap" style={{ marginBottom: 60 }}>
-      <Image imgName={featuredImg} />
-    </div>
-    {/* <PostEntryTitle location={location} title={title} /> */}
-    <Date date={date} />
-    <Content dangerouslySetInnerHTML={{ __html: html }} />
-    <div className="categories">
-      {categories &&
-        categories.map(cat => (
-          <div className="cat-item" key={cat}>
-            {cat}
-          </div>
-        ))}
-    </div>
-  </article>
-)
+const PostEntry = ({ post, location }) => {
+  const { frontmatter } = location === "single" ? post : post.node
+  return (
+    <article>
+      <PostEntryMedia location={location} post={post} />
+      <PostEntryTitle location={location} post={post} />
+      <Date date={frontmatter.date} />
+      <PostEntryContent location={location} post={post} />
+      <PostEntryMeta location={location} post={post} />
+    </article>
+  )
+}
 
 export default PostEntry

@@ -10,11 +10,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
     posts.forEach(({ node }) => {
       //Create Single posts
+      const { slug } = node.frontmatter
       createPage({
         path: `/posts${slug}`,
         component: postTemplate,
         context: {
-          slug: node.frontmatter.slug,
+          slug,
         },
       })
 

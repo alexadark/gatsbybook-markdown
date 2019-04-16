@@ -1,31 +1,22 @@
 import React from "react"
 import Layout from "../../components/Layout"
-import Image from "../../components/Image"
-import styled from "styled-components"
 import LastPosts from "../../components/LastPosts"
-import Date from "../../components/Date"
 import { FlexWrapper, Main, Aside } from "../../styles"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
+import PostEntry from "../../components/PostEntry"
 import Pagination from "../../components/Pagination"
 
 const Blog = props => {
-  const { currentPage, numPages, pathPrefix } = props.pageContext
+  const { currentPage, numPages } = props.pageContext
   const posts = props.data.allMarkdownRemark.edges
 
   return (
     <Layout>
       <FlexWrapper>
         <Main>
-          {posts.map(post => {
-            const { excerpt, frontmatter, id } = post.node
-            const { title, date, featuredImg, slug, categories } = frontmatter
-            return (
-              <article>
-                <h1>{title}</h1>
-                {excerpt}
-              </article>
-            )
-          })}
+          {posts.map(post => (
+            <PostEntry key={post.node.id} location="blog" post={post} />
+          ))}
           <Pagination
             currentPage={currentPage}
             numPages={numPages}

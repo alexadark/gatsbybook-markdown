@@ -6,23 +6,11 @@ import PostEntry from "../../components/PostEntry"
 import { FlexWrapper, Main, Aside } from "../../styles"
 
 const SinglePost = ({ data }) => {
-  const {
-    html,
-    frontmatter: { title, date, featuredImg, categories, slug },
-  } = data.markdownRemark
   return (
     <Layout>
       <FlexWrapper>
         <Main>
-          <PostEntry
-            html={html}
-            title={title}
-            featuredImg={featuredImg}
-            categories={categories}
-            date={date}
-            slug={slug}
-            location="single"
-          />
+          <PostEntry location="single" post={data.markdownRemark} />
         </Main>
         <Aside>
           <LastPosts />
@@ -38,7 +26,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date
+        date(formatString: "DD MMMM, YYYY")
         featuredImg
         categories
         slug
