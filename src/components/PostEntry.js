@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import Date from "./Date"
 import PostEntryTitle from "./PostEntryTitle"
 import PostEntryMedia from "./PostEntryMedia"
@@ -14,7 +15,7 @@ const EntryFooter = styled.div`
   padding-right: 50px;
 `
 
-const ReadMore = styled.a`
+const ReadMore = styled.div`
   border: 1px solid #ccc;
   padding: 2px 20px;
   font-size: 10px;
@@ -25,6 +26,9 @@ const ReadMore = styled.a`
   &:hover {
     background: #222;
     color: #fff;
+  }
+  a & {
+    border-bottom: none;
   }
 `
 
@@ -39,7 +43,9 @@ const PostEntry = ({ post, location }) => {
       <EntryFooter>
         <PostEntryMeta location={location} post={post} />
         {location !== "single" && (
-          <ReadMore href={`posts${frontmatter.slug}`}>Read More</ReadMore>
+          <Link to={`posts${frontmatter.slug}`}>
+            <ReadMore>Read More</ReadMore>
+          </Link>
         )}
       </EntryFooter>
     </article>
