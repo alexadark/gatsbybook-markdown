@@ -1,4 +1,5 @@
 const path = require("path")
+
 const postData = require("./src/templates/posts/data")
 const postTemplate = path.resolve("./src/templates/posts/singlePost.js")
 const blogTemplate = path.resolve("./src/templates/posts/archive.js")
@@ -54,8 +55,9 @@ exports.createPages = async ({ graphql, actions }) => {
       // creating a page for each categorie
 
       uniqCats.forEach(cat => {
+        const catSlug = cat.replace(" ", "_").toLowerCase()
         createPage({
-          path: `category/${cat}`,
+          path: `category/${catSlug}`,
           component: catTemplate,
           context: {
             cat,

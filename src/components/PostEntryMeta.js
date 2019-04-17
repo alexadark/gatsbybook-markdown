@@ -1,5 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
+import { slugify } from "../utils"
 const Categories = styled.div`
   display: flex;
   .cat-item {
@@ -23,9 +25,9 @@ const PostEntryMeta = ({ post, location }) => {
     <Categories>
       {categories &&
         categories.map(cat => (
-          <div className="cat-item" key={cat}>
+          <Link to={`/category/${slugify(cat)}`} className="cat-item" key={cat}>
             {cat}
-          </div>
+          </Link>
         ))}
     </Categories>
   )
