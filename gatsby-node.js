@@ -2,6 +2,7 @@ const path = require("path")
 const postData = require("./src/templates/posts/data")
 const postTemplate = path.resolve("./src/templates/posts/singlePost.js")
 const blogTemplate = path.resolve("./src/templates/posts/archive.js")
+const catTemplate = path.resolve("./src/templates/categories/archive.js")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -21,10 +22,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
       //Create blog archive with pagination
       const postsPerPage = 2
-      const numPages = Math.ceil(posts.length / postsPerPage)
+      const numPages = items => Math.ceil(items.length / postsPerPage)
       const blogPath = i => (i === 0 ? "/" : `/blog/${i + 1}`)
 
-      Array.from({ length: numPages }).forEach((_, i) => {
+      Array.from({ length: numPages(posts) }).forEach((_, i) => {
         createPage({
           path: blogPath(i),
           component: blogTemplate,
@@ -33,6 +34,31 @@ exports.createPages = async ({ graphql, actions }) => {
             skip: i * postsPerPage,
             numPages,
             currentPage: i + 1,
+          },
+        })
+      })
+
+      //Categories
+
+      const cats = []
+      posts.forEach(post =>
+        post.node.frontmatter.categories.forEach(cat => cats.push(cat))
+      )
+
+      //count number of items by category
+      const counts = {}
+      cats.forEach(cat => (counts[cat] = (counts[cat] || 0) + 1))
+
+      const uniqCats = Object.keys(counts)
+
+      // creating a page for each categorie
+
+      uniqCats.forEach(cat => {
+        createPage({
+          path: `category/${cat}`,
+          component: catTemplate,
+          context: {
+            cat,
           },
         })
       })

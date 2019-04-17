@@ -2,7 +2,7 @@
 slug: "/budapest"
 date: "2018-10-17"
 title: "Budapest"
-categories: ["painting", "photo"]
+categories: ["painting", "photo", "design"]
 featuredImg: "budapest.jpeg"
 ---
 
