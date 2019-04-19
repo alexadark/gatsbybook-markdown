@@ -70,12 +70,22 @@ exports.createPages = async ({ graphql, actions }) => {
 
       uniqCats.forEach(cat => {
         const catSlug = cat.replace(" ", "_").toLowerCase()
-        createPage({
-          path: `category/${catSlug}`,
-          component: catTemplate,
-          context: {
-            cat,
-          },
+        const numPages = Math.ceil(counts[cat] / postsPerPage)
+        console.log(cat, counts[cat])
+        // console.log(numpages)
+
+        Array.from({ length: numPages }).forEach((_, i) => {
+          createPage({
+            path: `category/${catSlug}`,
+            component: catTemplate,
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              numPages,
+              currentPage: i + 1,
+              cat,
+            },
+          })
         })
       })
     })
