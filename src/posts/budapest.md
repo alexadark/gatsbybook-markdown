@@ -6,7 +6,7 @@ categories: ["photo", "design", "My Cat"]
 featuredImg: "budapest.jpeg"
 ---
 
-# YO!
+# Bonjour!
 
 Sapiente fugit et unde ea. Veniam iure molestias ullam in. Et distinctio velit occaecati magni sed ratione sed ut.
 

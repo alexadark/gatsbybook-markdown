@@ -3,7 +3,8 @@ import styled from "styled-components"
 
 const StyledForm = styled.form`
   flex-basis: 50%;
-  min-width: 400px;
+
+  width: 100%;
   margin: 20px 0;
   input,
   textarea {
@@ -11,6 +12,7 @@ const StyledForm = styled.form`
     width: 100%;
     margin-bottom: 15px;
     padding: 10px 20px;
+    border: 1px solid #ddd;
   }
   textarea {
     height: 200px;

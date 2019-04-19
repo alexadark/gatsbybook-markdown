@@ -13,7 +13,6 @@ const EntryFooter = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 60px;
-  padding-right: 50px;
 `
 
 const ReadMore = styled.div`
