@@ -25,7 +25,7 @@ const TwoColumns = styled.div`
 `
 const AboutPage = () => (
   <Layout>
-    <SEO title="Contact" />
+    <SEO title="About" />
     <TwoColumns>
       <div className="content">
         <PageTitle>About</PageTitle>

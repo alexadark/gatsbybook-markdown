@@ -5,13 +5,15 @@ import { FlexWrapper, Main, Aside } from "../../styles"
 import { graphql } from "gatsby"
 import PostEntry from "../../components/PostEntry"
 import Pagination from "../../components/Pagination"
+import SEO from "../../components/Seo"
 
 const Category = props => {
-  const { currentPage, numPages } = props.pageContext
+  const { currentPage, numPages, cat } = props.pageContext
   const posts = props.data.allMarkdownRemark.edges
 
   return (
     <Layout>
+      <SEO title={` ${cat} category`} />
       <FlexWrapper>
         <Main>
           {posts.map(post => (

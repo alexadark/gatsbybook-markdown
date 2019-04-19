@@ -5,6 +5,7 @@ import { FlexWrapper, Main, Aside } from "../../styles"
 import { graphql } from "gatsby"
 import PostEntry from "../../components/PostEntry"
 import Pagination from "../../components/Pagination"
+import SEO from "../../components/Seo"
 
 const Blog = props => {
   const { currentPage, numPages } = props.pageContext
@@ -12,6 +13,7 @@ const Blog = props => {
 
   return (
     <Layout>
+      <SEO title="Blog" />
       <FlexWrapper>
         <Main>
           {posts.map(post => (
