@@ -9,6 +9,7 @@ const StyledPagination = styled.div`
   align-items: center;
   font-size: 14px;
   padding-right: 50px;
+  margin-bottom: 40px;
   .mutted {
     color: #bbb;
   }

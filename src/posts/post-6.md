@@ -2,7 +2,7 @@
 slug: "/post-6"
 date: "2014-04-10"
 title: "Post-6"
-categories: ["painting", "photo"]
+categories: ["photo"]
 featuredImg: "paris.jpeg"
 ---
 

@@ -11,6 +11,7 @@ const EntryFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 60px;
   padding-right: 50px;
 `
@@ -23,6 +24,8 @@ const ReadMore = styled.div`
   letter-spacing: 1px;
   color: #555;
   font-weight: 400;
+  transition: all 0.4s ease-in-out;
+  flex-basis: 200px;
   &:hover {
     background: #222;
     color: #fff;

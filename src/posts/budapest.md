@@ -2,7 +2,7 @@
 slug: "/budapest"
 date: "2018-10-17"
 title: "Budapest"
-categories: ["painting", "photo", "design", "My Cat"]
+categories: ["photo", "design", "My Cat"]
 featuredImg: "budapest.jpeg"
 ---
 

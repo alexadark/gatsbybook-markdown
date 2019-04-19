@@ -17,11 +17,11 @@ const Category = props => {
           {posts.map(post => (
             <PostEntry key={post.node.id} location="blog" post={post} />
           ))}
-          <Pagination
+          {/* <Pagination
             currentPage={currentPage}
             numPages={numPages}
             pathPrefix="blog/"
-          />
+          /> */}
         </Main>
         <Aside>
           <LastPosts />

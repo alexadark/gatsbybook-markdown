@@ -7,8 +7,10 @@ import { Container } from "../styles"
 
 const StyledHeader = styled.header`
   div {
-    display: flex;
-    justify-content: space-between;
+    @media (min-width: 600px) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
   @media (min-width: 768px) {
     padding: 80px 0;

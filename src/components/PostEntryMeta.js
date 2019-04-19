@@ -4,8 +4,11 @@ import { Link } from "gatsby"
 import { slugify } from "../utils"
 const Categories = styled.div`
   display: flex;
+  flex-wrap: wrap;
   .cat-item {
-    padding: 2px 20px;
+    padding: 4px 20px;
+
+    text-align: center;
     background-color: #f5f5f5;
     margin-right: 10px;
     font-size: 10px;
@@ -13,6 +16,11 @@ const Categories = styled.div`
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #999;
+    border: none;
+    margin-bottom: 10px;
+    &:hover {
+      background: #eee;
+    }
   }
 `
 

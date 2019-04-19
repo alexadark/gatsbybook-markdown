@@ -2,7 +2,7 @@
 slug: "/paris"
 date: "2019-04-10"
 title: "Paris"
-categories: ["painting", "photo"]
+categories: ["photo"]
 featuredImg: "paris.jpeg"
 ---
 
