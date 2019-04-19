@@ -32,10 +32,12 @@ const Category = props => {
 }
 
 export const pageQuery = graphql`
-  query catPageQuery($cat: String!) {
+  query catPageQuery($cat: String!, $skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { categories: { eq: $cat } } }
+      skip: $skip
+      limit: $limit
     ) {
       edges {
         node {

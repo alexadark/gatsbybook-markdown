@@ -23,10 +23,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
       //Create blog archive with pagination
       const postsPerPage = 2
-      const numPages = items => Math.ceil(items.length / postsPerPage)
+      const numPages = Math.ceil(posts.length / postsPerPage)
       const blogPath = i => (i === 0 ? "/" : `/blog/${i + 1}`)
 
-      Array.from({ length: numPages(posts) }).forEach((_, i) => {
+      Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
           path: blogPath(i),
           component: blogTemplate,
@@ -56,12 +56,22 @@ exports.createPages = async ({ graphql, actions }) => {
 
       uniqCats.forEach(cat => {
         const catSlug = cat.replace(" ", "_").toLowerCase()
-        createPage({
-          path: `category/${catSlug}`,
-          component: catTemplate,
-          context: {
-            cat,
-          },
+        const numPages = Math.ceil(counts[cat] / postsPerPage)
+        console.log(cat, counts[cat])
+        // console.log(numpages)
+
+        Array.from({ length: numPages }).forEach((_, i) => {
+          createPage({
+            path: `category/${catSlug}`,
+            component: catTemplate,
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              numPages,
+              currentPage: i + 1,
+              cat,
+            },
+          })
         })
       })
     })
