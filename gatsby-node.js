@@ -5,6 +5,19 @@ const postTemplate = path.resolve("./src/templates/posts/singlePost.js")
 const blogTemplate = path.resolve("./src/templates/posts/archive.js")
 const catTemplate = path.resolve("./src/templates/categories/archive.js")
 
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === "MarkdownRemark") {
+    const slug = path.basename(node.fileAbsolutePath, ".md")
+
+    createNodeField({
+      node,
+      name: "slug2",
+      value: slug,
+    })
+  }
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   return await graphql(postData).then(results => {
@@ -13,6 +26,7 @@ exports.createPages = async ({ graphql, actions }) => {
     posts.forEach(({ node }) => {
       //Create Single posts
       const { slug } = node.frontmatter
+
       createPage({
         path: `/posts${slug}`,
         component: postTemplate,

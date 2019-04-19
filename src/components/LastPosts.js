@@ -1,5 +1,5 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Date from "./Date"
 import styled from "styled-components"
 
@@ -41,29 +41,28 @@ const LASTS_POSTS_QUERY = graphql`
   }
 `
 
-const LastPosts = () => (
-  <StaticQuery
-    query={LASTS_POSTS_QUERY}
-    render={({ allMarkdownRemark }) => (
-      <aside>
-        <h2 style={{ marginBottom: 50 }}>Latest Posts</h2>
-        <PostList>
-          {allMarkdownRemark.edges.map(edge => {
-            const post = edge.node.frontmatter
-            return (
-              <li key={post.slug}>
-                <h3>
-                  {" "}
-                  <Link to={`/posts${post.slug}`}>{post.title}</Link>
-                </h3>
-                <Date date={post.date} />
-              </li>
-            )
-          })}
-        </PostList>
-      </aside>
-    )}
-  />
-)
+const LastPosts = () => {
+  const data = useStaticQuery(LASTS_POSTS_QUERY)
+
+  return (
+    <aside>
+      <h2 style={{ marginBottom: 50 }}>Latest Posts</h2>
+      <PostList>
+        {data.allMarkdownRemark.edges.map(edge => {
+          const post = edge.node.frontmatter
+          return (
+            <li key={post.slug}>
+              <h3>
+                {" "}
+                <Link to={`/posts${post.slug}`}>{post.title}</Link>
+              </h3>
+              <Date date={post.date} />
+            </li>
+          )
+        })}
+      </PostList>
+    </aside>
+  )
+}
 
 export default LastPosts
