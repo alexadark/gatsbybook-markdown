@@ -22,6 +22,56 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   return await graphql(postData).then(results => {
     const posts = results.data.allMarkdownRemark.edges
+    const cats = posts.reduce((cats, post) => {
+      const postCats = post.node.frontmatter.categories || []
+      postCats.map(c => {
+        const cat = cats.find(({ name }) => name === c) || { name: c, count: 0 }
+        cats = [
+          ...cats.filter(({ name }) => name !== c),
+          { ...cat, count: cat.count + 1 },
+        ]
+      })
+      return cats
+    }, [])
+
+    //Create blog archive with pagination
+    const postsPerPage = 2
+    const numPages = Math.ceil(posts.length / postsPerPage)
+    const blogPath = i => (i === 0 ? "/" : `/blog/${i + 1}`)
+
+    // Create archive pages
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: blogPath(i),
+        component: blogTemplate,
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    })
+
+    // Create category archive pages
+    cats.map(({ name, count }) => {
+      const catSlug = name.replace(" ", "_").toLowerCase()
+      const numPages = Math.ceil(count / postsPerPage)
+
+      Array.from({ length: numPages }).forEach((_, i) => {
+        createPage({
+          path: `category/${catSlug}${(i && `/${i + 1}`) || ""}`,
+          component: catTemplate,
+          context: {
+            limit: postsPerPage,
+            skip: i * postsPerPage,
+            numPages,
+            currentPage: i + 1,
+            cat: name,
+          },
+        })
+      })
+    })
 
     posts.forEach(({ node }) => {
       //Create Single posts
@@ -33,60 +83,6 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           slug,
         },
-      })
-
-      //Create blog archive with pagination
-      const postsPerPage = 2
-      const numPages = Math.ceil(posts.length / postsPerPage)
-      const blogPath = i => (i === 0 ? "/" : `/blog/${i + 1}`)
-
-      Array.from({ length: numPages }).forEach((_, i) => {
-        createPage({
-          path: blogPath(i),
-          component: blogTemplate,
-          context: {
-            limit: postsPerPage,
-            skip: i * postsPerPage,
-            numPages,
-            currentPage: i + 1,
-          },
-        })
-      })
-
-      //Categories
-
-      const cats = []
-      posts.forEach(post =>
-        post.node.frontmatter.categories.forEach(cat => cats.push(cat))
-      )
-
-      //count number of items by category
-      const counts = {}
-      cats.forEach(cat => (counts[cat] = (counts[cat] || 0) + 1))
-
-      const uniqCats = Object.keys(counts)
-
-      // creating a page for each categorie
-
-      uniqCats.forEach(cat => {
-        const catSlug = cat.replace(" ", "_").toLowerCase()
-        const numPages = Math.ceil(counts[cat] / postsPerPage)
-        console.log(cat, counts[cat])
-        // console.log(numpages)
-
-        Array.from({ length: numPages }).forEach((_, i) => {
-          createPage({
-            path: `category/${catSlug}`,
-            component: catTemplate,
-            context: {
-              limit: postsPerPage,
-              skip: i * postsPerPage,
-              numPages,
-              currentPage: i + 1,
-              cat,
-            },
-          })
-        })
       })
     })
   })
