@@ -23,6 +23,7 @@ const Blog = props => {
             currentPage={currentPage}
             numPages={numPages}
             pathPrefix="blog/"
+            firstIsHome={true}
           />
         </Main>
         <Aside>

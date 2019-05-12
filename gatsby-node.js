@@ -9,7 +9,6 @@ exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === "MarkdownRemark") {
     const slug = path.basename(node.fileAbsolutePath, ".md")
-
     createNodeField({
       node,
       name: "slug2",
@@ -68,14 +67,26 @@ exports.createPages = async ({ graphql, actions }) => {
 
       // creating a page for each categorie
 
+      const catsPerPage = 2
       uniqCats.forEach(cat => {
-        const catSlug = cat.replace(" ", "_").toLowerCase()
-        createPage({
-          path: `category/${catSlug}`,
-          component: catTemplate,
-          context: {
-            cat,
-          },
+        Array.from({ length: counts[cat] }).forEach((_, i) => {
+          const catSlug = cat.replace(" ", "_").toLowerCase()
+          const numPages = Math.ceil(counts[cat] / catsPerPage)
+          const categoryPath = i =>
+            i === 0 ? `/category/${catSlug}` : `/category/${catSlug}/${i + 1}`
+
+          createPage({
+            path: categoryPath(i),
+            component: catTemplate,
+            context: {
+              limit: catsPerPage,
+              skip: i * catsPerPage,
+              currentPage: i + 1,
+              numPages,
+              catSlug,
+              cat,
+            },
+          })
         })
       })
     })
