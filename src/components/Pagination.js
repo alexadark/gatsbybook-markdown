@@ -37,12 +37,14 @@ const PrevNextLinks = styled.div`
   }
 `
 
-const Pagination = ({ currentPage, numPages, pathPrefix }) => {
+const Pagination = ({ currentPage, numPages, pathPrefix, firstIsHome }) => {
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
   const prevPage =
     currentPage - 1 === 1
-      ? "/"
+      ? firstIsHome
+        ? "/"
+        : pathPrefix
       : `${pathPrefix}/${(currentPage - 1).toString()}`
   const nextPage = `${pathPrefix}${(currentPage + 1).toString()}`
 
@@ -63,7 +65,13 @@ const Pagination = ({ currentPage, numPages, pathPrefix }) => {
           {Array.from({ length: numPages }, (_, i) => (
             <Link
               key={`pagination-number${i + 1}`}
-              to={i === 0 ? "" : `${pathPrefix}${i + 1}`}
+              to={
+                i === 0
+                  ? firstIsHome
+                    ? ""
+                    : pathPrefix
+                  : `${pathPrefix}${i + 1}`
+              }
             >
               {i + 1}
             </Link>
@@ -87,10 +95,12 @@ Pagination.propTypes = {
   pathPrefix: PropTypes.string,
   numPages: PropTypes.number,
   currentPage: PropTypes.number,
+  firstIsHome: PropTypes.bool,
 }
 
 Pagination.defaultProps = {
   pathPrefix: ``,
+  firstIsHome: false,
 }
 
 export default Pagination
